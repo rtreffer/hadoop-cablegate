@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+  <name>mapred.local.dir</name>
+  <value>/tmp/hadoop/</value>
+</property>
+
+<property>
+  <name>mapred.tasktracker.map.tasks.maximum</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>mapred.job.tracker</name>
+  <value>localhost:50050</value>
+</property>
+
+<property>
+  <name>mapred.tasktracker.reduce.tasks.maximum</name>
+  <value>2</value>
+</property>
+
+<property>
+  <name>mapred.jobtracker.restart.recover</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>mapred.task.timeout</name>
+  <value>10800000</value>
+</property>
+
+<property>
+  <name>mapred.job.reuse.jvm.num.tasks</name>
+  <value>100</value>
+</property>
+
+<property>
+  <name>mapred.compress.map.output</name>
+  <value>true</value>
+</property>
+
+<property>
+  <name>mapred.child.java.opts</name>
+  <value>-server -Xmx800m -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode -XX:+UseParNewGC -XX:+CMSIncrementalPacing</value>
+</property>
+
+</configuration>

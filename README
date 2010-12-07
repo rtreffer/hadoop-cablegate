@@ -1,0 +1,71 @@
+                                 Basic question
+==============================================================================
+
+- Wikipedia has a huge tagged article database
+- Wikileaks has a huge leaked cable base
+
+This project tries to answer two simple question:
+- What's the context of a cable?
+
+                                   Analysis
+==============================================================================
+
+All cables are pushed into a lucene index. This index is then optimized.
+
+A first map/reduce analyses the natural score of each wikipedia categorie.
+
+A second map/reduce job will analyze all wikipedia articles and search the
+index. Output are tuples of <cable, (category, score)>.
+
+The reducer computes the top20 scores for every cable.
+
+                                     Why
+==============================================================================
+
+The current leak is said to be the first batch. Leaks won't become smaller.
+Having a solid base to snoop through a bunch of txt files and get their links
+with wikipedia may help to improve the quality and speed of leaks.
+
+Information is one part. Analysis is the complement. The analysing part is
+currently done by human beeings, journalists (which is highly appreciated!).
+
+But what would you do if the insurance key leaks tomorrow?
+
+                                   Usage
+==============================================================================
+
+Put the cables into the cables folder. There is a nice html website to txt
+converter at https://github.com/alx/cablegate
+
+Put the wikipedia dump into wikipedia. enwiki-latest-pages-articles.xml.bz2
+
+Setup a local or remote Hadoop cluster.
+
+                            Single node cluster
+==============================================================================
+
+The whole analysis can easily be run a core2duo notebook. The analysis take
+~8h in total (3.5 + 4.5h). You'll need ~20GB of free disk space for wikipedia.
+
+
+                         Home hardware recommendation
+==============================================================================
+
+I/O is important, thus get many disks, not expensive ones. 4GB ram/node is ok
+for normal taks.
+
+- Grab 3 atom D510 barebones
+- Attach 2 1.5TB disks to every node
+- Add 2x2GB DDR3
+this will usually cost less than 1000€ and will enable you to use
+uncompressed wikipedia dumps.
+
+Alternatly buy some hours on a cloud hosting service. Don't use amazon.
+
+                                     Note
+==============================================================================
+
+This code is ugly. I know. I tried to push it early, not beautiful :-)
+
+Hope this will be usefull.
+
